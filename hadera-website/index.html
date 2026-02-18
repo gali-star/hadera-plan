@@ -12,86 +12,68 @@
             --light-bg: #f8f9fa; 
         }
 
-        /* הגדרות בסיס - נועל את המסך למבנה של אפליקציה */
         body, html { 
             margin: 0; padding: 0; height: 100vh; 
-            overflow: hidden; /* מונע גלילה של כל הדף */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            display: flex; flex-direction: column;
             background-color: var(--light-bg);
+            display: flex; flex-direction: column;
+            overflow: hidden; /* נועל את המסך החיצוני למבנה מפוצל */
         }
 
-        /* ראש האתר - קבוע למעלה */
-        header { 
-            background: #fff; 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
-            z-index: 1000;
-            flex-shrink: 0; /* מונע מהתפריט להתכווץ */
-        }
+        header { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000; flex-shrink: 0; }
 
         .header-top { 
             display: flex; justify-content: space-between; align-items: center; 
             padding: 10px 5%; border-bottom: 3px solid var(--primary-green);
         }
         
-        .logo-container img { height: 75px; width: auto; }
+        /* הצגת הלוגו המאוחד */
+        .logo-container img { height: 75px; width: auto; object-fit: contain; }
         .site-title { color: var(--earth-brown); margin: 0; font-size: 1.4rem; font-weight: bold; }
         
         nav { background: var(--primary-green); }
-        nav ul { list-style: none; display: flex; justify-content: center; padding: 0; margin: 0; }
+        nav ul { list-style: none; display: flex; justify-content: center; padding: 0; margin: 0; flex-wrap: wrap; }
         nav ul li { position: relative; }
         nav ul li a { color: white; text-decoration: none; font-weight: bold; font-size: 0.9rem; padding: 15px 15px; display: block; }
         nav ul li a:hover { background: rgba(255,255,255,0.2); }
 
-        /* תפריט נפתח */
+        /* תפריט נפתח למאגר מידע */
         .dropdown:hover .dropdown-content { display: block; }
         .dropdown-content { 
             display: none; position: absolute; background-color: #fff; 
             min-width: 180px; box-shadow: 0px 8px 16px rgba(0,0,0,0.2); 
             right: 0; z-index: 1100;
         }
-        .dropdown-content a { color: var(--dark-green); padding: 12px 16px; border-bottom: 1px solid #eee; display: block; text-decoration: none; }
+        .dropdown-content a { color: var(--dark-green); padding: 12px 16px; border-bottom: 1px solid #eee; display: block; text-decoration: none; font-size: 0.85rem; }
 
-        /* המבנה המרכזי - חלוקה לימין ושמאל */
+        /* המבנה המפוצל - גלילה עצמאית */
         .main-wrapper {
-            display: flex;
-            flex: 1; /* לוקח את כל הגובה שנשאר */
-            overflow: hidden; /* מונע גלילה חיצונית */
+            display: flex; flex: 1; overflow: hidden;
+            max-width: 1400px; margin: 0 auto; width: 100%;
         }
 
-        /* צד ימין - אודות (גלילה עצמאית) */
+        /* צד ימין - אודות */
         .about-sidebar {
-            width: 300px;
-            background: #fff;
-            padding: 30px;
-            border-left: 1px solid #ddd;
-            border-right: 5px solid var(--earth-brown);
-            overflow-y: auto; /* גלילה פנימית בלבד */
-            flex-shrink: 0;
+            width: 280px; padding: 25px; background: #fff;
+            border-left: 1px solid #ddd; border-right: 5px solid var(--earth-brown);
+            overflow-y: auto; flex-shrink: 0;
         }
 
-        .about-sidebar h3 { color: var(--earth-brown); border-bottom: 2px solid var(--earth-brown); padding-bottom: 10px; margin-top: 0; }
+        .about-sidebar h3 { color: var(--earth-brown); border-bottom: 2px solid var(--earth-brown); padding-bottom: 8px; margin-top: 0; }
 
-        /* צד שמאל - תוכן הנחלים (גלילה עצמאית) */
+        /* צד שמאל - תוכן */
         .content-area {
-            flex: 1;
-            padding: 30px;
-            overflow-y: auto; /* גלילה פנימית בלבד */
+            flex: 1; padding: 30px; overflow-y: auto;
             scroll-behavior: smooth;
         }
 
-        section { 
-            background: white; padding: 40px; margin-bottom: 30px; 
-            border-radius: 8px; border-right: 8px solid var(--primary-green); 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
-        }
-
-        .intro-image { width: 100%; max-width: 800px; height: auto; display: block; margin: 20px auto; border-radius: 8px; }
+        section { background: white; padding: 40px; margin-bottom: 30px; border-radius: 8px; border-right: 8px solid var(--primary-green); box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .intro-image { width: 100%; max-width: 750px; height: auto; display: block; margin: 20px auto; border-radius: 8px; }
         .stat-box { background: #f1f8e9; padding: 15px; border-radius: 5px; margin: 15px 0; border-right: 4px solid var(--primary-green); }
-        .pdf-button { display: inline-block; background-color: #d32f2f; color: white; padding: 10px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 15px; }
+        .pdf-button { display: inline-block; background-color: #d32f2f; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 10px; }
 
-        h2 { color: var(--dark-green); margin-top: 0; }
-        footer { text-align: center; padding: 15px; background: #fff; border-top: 1px solid #ddd; flex-shrink: 0; font-size: 0.8rem; }
+        h2 { color: var(--dark-green); margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        footer { text-align: center; padding: 15px; background: #fff; border-top: 1px solid #ddd; font-size: 0.8rem; flex-shrink: 0; }
 
         @media (max-width: 950px) {
             .main-wrapper { flex-direction: column; overflow-y: auto; }
@@ -140,7 +122,7 @@
         <p><strong>סטטוס:</strong> טיוטה לעיון</p>
         <p><strong>תאריך:</strong> פברואר 2026</p>
         <hr>
-        <p>מסמך זה מרכז את הנחיות התכנון והניהול עבור אגן נחל חדרה על כל שלוחותיו. התכנית שמה דגש על איזון בין צרכי הפיתוח לבין שימור המערכות האקולוגיות.</p>
+        <p>מסמך זה מרכז את הנחיות התכנון והניהול עבור אגן נחל חדרה. התכנית שמה דגש על איזון בין צרכי הפיתוח לבין שימור המערכות האקולוגיות.</p>
     </aside>
 
     <main class="content-area">
@@ -152,37 +134,24 @@
 
         <section id="iron">
             <h2>אגן מישנה עירון</h2>
-            <p>שטח אגן נחל עירון כ-150 קמ"ר. אורכו כ- 22 קילומטרים והוא זורם בקווי המפגש של השומרון, רמות מנשה והשרון.</p>
+            <p>שמו העברי "עירון" נגזר מהשם "עַרוּנַה". שטח אגן נחל עירון כ-150 קמ"ר ואורכו כ- 22 קילומטרים.</p>
             <div class="stat-box">ראשיתו בהר אלכסנדר שבאום אל־פאחם והוא נשפך לנחל חדרה מדרום למושב תלמי אלעזר.</div>
             <a href="iron-summary.pdf" target="_blank" class="pdf-button">📄 פתיחת סיכום מושגים (PDF)</a>
         </section>
 
         <section id="haviva">
             <h2>אגן מישנה חביבה</h2>
-            <p>אחד מיובליו הגדולים של נחל חדרה. ראשיתו בשומרון והוא זורם אל מישור החוף דרך קיבוץ להבות חביבה. החלק המעלי אכזב ויבש.</p>
-            <div class="stat-box">שטחו כ-130 קמ"ר ואורכו כ-27 ק"מ.</div>
+            <p>אחד מיובליו הגדולים של נחל חדרה. ראשיתו בשומרון והוא זורם אל מישור החוף דרך קיבוץ להבות חביבה.</p>
         </section>
 
         <section id="yitzhak">
             <h2>אגן מישנה יצחק</h2>
-            <p>נחל איתן בעל רגישות אקולוגית גבוהה. השיקום הנופי והאקולוגי יצר הסדרה של הנחל בחתך רחב ומפלונים.</p>
-            <div class="stat-box">שטח אגן נחל יצחק הוא כ- 13.5 קמ"ר ואורכו כ- 7 ק"מ.</div>
+            <p>נחל איתן בעל רגישות אקולוגית גבוהה. שטח האגן כ-13.5 קמ"ר ואורכו כ-7 ק"מ.</p>
         </section>
 
-        <section id="maor">
-            <h2>אגן מישנה מאור</h2>
-            <p>יובל אכזב הזורם דרך מושב מאור. שטחו כ-7.5 קמ"ר ואורכו כ-3.5 ק"מ.</p>
-        </section>
-
-        <section id="narbeta">
-            <h2>אגן מישנה נרבתא</h2>
-            <p>תחילתו באזור העיר ג'נין והוא זורם בפאתי חריש וקיבוץ מצר. שטחו כ-70 קמ"ר ואורכו כ-20 ק"מ.</p>
-        </section>
-
-        <section id="rushrushi">
-            <h2>אגן מישנה רושרשי</h2>
-            <p>יובל המתחיל בנביעה במתחם גרנות וזורם דרך שטחי גן שמואל. שטחו כ-13 קמ"ר.</p>
-        </section>
+        <section id="maor"><h2>אגן מישנה מאור</h2><p>שטחו כ-7.5 קמ"ר ואורכו כ-3.5 ק"מ.</p></section>
+        <section id="narbeta"><h2>אגן מישנה נרבתא</h2><p>שטחו כ-70 קמ"ר ואורכו כ-20 ק"מ.</p></section>
+        <section id="rushrushi"><h2>אגן מישנה רושרשי</h2><p>שטחו כ-13 קמ"ר ואורכו כ-3.5 ק"מ.</p></section>
     </main>
 </div>
 
